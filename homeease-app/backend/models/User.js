@@ -77,30 +77,46 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
+  isCompleteProfile: {
+    type: Boolean,
+    default: function() {
+      return this.userType !== 'provider'; // Non-providers are complete by default
+    }
+  },
   // Provider specific fields
   providerDetails: {
     businessName: {
       type: String,
-      required: function() { return this.userType === 'provider'; }
+      required: function() { 
+        return this.userType === 'provider' && this.isCompleteProfile; 
+      }
     },
     companyName: {
       type: String,
-      required: function() { return this.userType === 'provider'; }
+      required: function() { 
+        return this.userType === 'provider' && this.isCompleteProfile; 
+      }
     },
     gstNumber: {
       type: String,
-      required: function() { return this.userType === 'provider'; }
+      required: function() { 
+        return this.userType === 'provider' && this.isCompleteProfile; 
+      }
       // GST format validation removed - only size check remains
     },
     panNumber: {
       type: String,
-      required: function() { return this.userType === 'provider'; },
+      required: function() { 
+        return this.userType === 'provider' && this.isCompleteProfile; 
+      },
       match: [/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/, 'Please enter a valid PAN number']
     },
     businessType: {
       type: String,
       enum: ['individual', 'partnership', 'private_limited', 'llp', 'other'],
-      required: function() { return this.userType === 'provider'; }
+      required: function() { 
+        return this.userType === 'provider' && this.isCompleteProfile; 
+      }
     },
     businessAddress: {
       street: String,

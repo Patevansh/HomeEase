@@ -169,4 +169,98 @@ router.put('/profile', [
   }
 });
 
+// @route   PUT /api/users/complete-provider-profile
+// @desc    Complete provider profile with business details
+// @access  Private (Provider only)
+router.put('/complete-provider-profile', [
+  auth,
+  body('businessName')
+    .notEmpty()
+    .withMessage('Business name is required'),
+  body('companyName')
+    .notEmpty()
+    .withMessage('Company name is required'),
+  body('gstNumber')
+    .notEmpty()
+    .withMessage('GST number is required'),
+  body('panNumber')
+    .matches(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/)
+    .withMessage('Please enter a valid PAN number'),
+  body('businessType')
+    .isIn(['individual', 'partnership', 'private_limited', 'llp', 'other'])
+    .withMessage('Please select a valid business type')
+], async (req, res) => {
+  try {
+    // Check for validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation failed',
+        errors: errors.array()
+      });
+    }
+
+    // Check if user is a provider
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    if (user.userType !== 'provider') {
+      return res.status(403).json({
+        success: false,
+        message: 'Only providers can complete business profile'
+      });
+    }
+
+    const { 
+      businessName, 
+      companyName, 
+      gstNumber, 
+      panNumber, 
+      businessType,
+      businessAddress,
+      description,
+      experience
+    } = req.body;
+
+    // Update provider details
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        providerDetails: {
+          businessName,
+          companyName,
+          gstNumber,
+          panNumber,
+          businessType,
+          businessAddress,
+          description,
+          experience
+        },
+        isCompleteProfile: true
+      },
+      { new: true, runValidators: true }
+    ).select('-password');
+
+    res.status(200).json({
+      success: true,
+      message: 'Provider profile completed successfully',
+      data: updatedUser
+    });
+
+  } catch (error) {
+    console.error('Complete provider profile error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+      error: error.message
+    });
+  }
+});
+
 module.exports = router;
