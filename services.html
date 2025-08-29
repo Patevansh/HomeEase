@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - HomeEase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="services.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h2><a href="index.html">HomeEase</a></h2>
+                </div>
+                
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search for services..." class="search-input">
+                    </div>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="services.html" class="nav-link active">Services</a></li>
+                        <li><a href="#about" class="nav-link">About Us</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="openAuthModal('login')">Login</button>
+                    <button class="btn btn-primary" onclick="openAuthModal('signup')">Sign Up</button>
+                </div>
+                
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Professional Home Services</h1>
+            <p>Choose from our wide range of professional services for your home</p>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <!-- Plumbing Services -->
+                <div class="category-section">
+                    <h2><i class="fas fa-wrench"></i> Plumbing Services</h2>
+                    <div class="service-items">
+                        <div class="service-item" onclick="addToCart('tap-fix', 'Tap Fix', 149)">
+                            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300" alt="Tap Fix">
+                            <div class="service-info">
+                                <h3>Tap Fix</h3>
+                                <p>Repair leaky taps and faucets</p>
+                                <div class="service-price">₹149</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item" onclick="addToCart('pipe-repair', 'Pipe Repair', 299)">
+                            <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=300" alt="Pipe Repair">
+                            <div class="service-info">
+                                <h3>Pipe Repair</h3>
+                                <p>Fix broken or leaking pipes</p>
+                                <div class="service-price">₹299</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item" onclick="addToCart('toilet-repair', 'Toilet Repair', 199)">
+                            <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=300" alt="Toilet Repair">
+                            <div class="service-info">
+                                <h3>Toilet Repair</h3>
+                                <p>Fix toilet flush and seat issues</p>
+                                <div class="service-price">₹199</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Electrical Services -->
+                <div class="category-section">
+                    <h2><i class="fas fa-bolt"></i> Electrical Services</h2>
+                    <div class="service-items">
+                        <div class="service-item" onclick="addToCart('switch-repair', 'Switch Repair', 99)">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=300" alt="Switch Repair">
+                            <div class="service-info">
+                                <h3>Switch Repair</h3>
+                                <p>Fix electrical switches and sockets</p>
+                                <div class="service-price">₹99</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item" onclick="addToCart('fan-installation', 'Fan Installation', 249)">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300" alt="Fan Installation">
+                            <div class="service-info">
+                                <h3>Fan Installation</h3>
+                                <p>Install ceiling and wall fans</p>
+                                <div class="service-price">₹249</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item" onclick="addToCart('wiring-check', 'Wiring Check', 399)">
+                            <img src="https://images.unsplash.com/photo-1621905252472-e8ace008e9e7?w=300" alt="Wiring Check">
+                            <div class="service-info">
+                                <h3>Wiring Check</h3>
+                                <p>Complete electrical wiring inspection</p>
+                                <div class="service-price">₹399</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cleaning Services -->
+                <div class="category-section">
+                    <h2><i class="fas fa-broom"></i> Cleaning Services</h2>
+                    <div class="service-items">
+                        <div class="service-item" onclick="addToCart('house-cleaning', 'House Cleaning', 599)">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300" alt="House Cleaning">
+                            <div class="service-info">
+                                <h3>House Cleaning</h3>
+                                <p>Complete home deep cleaning</p>
+                                <div class="service-price">₹599</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item" onclick="addToCart('bathroom-cleaning', 'Bathroom Cleaning', 299)">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=300" alt="Bathroom Cleaning">
+                            <div class="service-info">
+                                <h3>Bathroom Cleaning</h3>
+                                <p>Deep bathroom sanitization</p>
+                                <div class="service-price">₹299</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-item" onclick="addToCart('kitchen-cleaning', 'Kitchen Cleaning', 399)">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300" alt="Kitchen Cleaning">
+                            <div class="service-info">
+                                <h3>Kitchen Cleaning</h3>
+                                <p>Complete kitchen deep cleaning</p>
+                                <div class="service-price">₹399</div>
+                                <button class="btn btn-primary service-btn">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Cart Items</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: ₹<span id="cartTotal">0</span></strong>
+            </div>
+            <button class="btn btn-primary btn-full" onclick="proceedToCheckout()" id="checkoutBtn" disabled>
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Toggle Button -->
+    <button class="cart-toggle" onclick="toggleCart()" id="cartToggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HomeEase</h3>
+                    <p>Making home services easy and accessible for everyone.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Plumbing</a></li>
+                        <li><a href="#">Electrical</a></li>
+                        <li><a href="#">Cleaning</a></li>
+                        <li><a href="#">Carpentry</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HomeEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="services.js"></script>
+</body>
+</html>
