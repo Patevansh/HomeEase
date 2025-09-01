@@ -7,7 +7,8 @@ const OAuthDebug = () => {
   useEffect(() => {
     const checkOAuthStatus = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/auth/oauth-status');
+        const baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${baseURL}/api/auth/oauth-status`);
         const data = await response.json();
         setOauthStatus(data.oauth_status);
       } catch (error) {

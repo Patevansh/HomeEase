@@ -74,11 +74,12 @@ app.use(limiter);
 
 // CORS configuration
 const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  // Always allow localhost for development/testing
   'http://localhost:3000',
   'http://localhost:3001', 
   'http://localhost:3002',
-  'http://localhost:3003',
-  process.env.FRONTEND_URL
+  'http://localhost:3003'
 ].filter(Boolean);
 
 app.use(cors({

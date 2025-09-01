@@ -22,11 +22,11 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:5000/api/auth/google';
+    window.location.href = process.env.REACT_APP_GOOGLE_AUTH_URL || '/api/auth/google';
   };
 
   const handleFacebookLogin = () => {
-    window.location.href = 'http://localhost:5000/api/auth/facebook';
+    window.location.href = process.env.REACT_APP_FACEBOOK_AUTH_URL || '/api/auth/facebook';
   };
 
   const handleSubmit = async (e) => {

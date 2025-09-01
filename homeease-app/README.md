@@ -338,6 +338,22 @@ The application is fully responsive and works on:
 
 ## 📄 License
 
+## 🚀 Production Deployment
+
+This project is ready for deployment on Vercel. See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
+
+### Quick Deployment Steps:
+1. Deploy backend to Vercel with environment variables
+2. Deploy frontend to Vercel with backend URL
+3. Update OAuth redirect URIs
+4. Test all functionality
+
+### Environment Files:
+- Backend: Use `.env.production` for production values
+- Frontend: Update `.env` with production API URLs
+
+## 📄 License
+
 This project is licensed under the MIT License.
 
 ## 📞 Support
@@ -346,6 +362,7 @@ For support and questions:
 - Open an issue in the repository
 - Check existing documentation
 - Review the troubleshooting section
+- See [DEPLOYMENT.md](DEPLOYMENT.md) for deployment help
 
 ---
 

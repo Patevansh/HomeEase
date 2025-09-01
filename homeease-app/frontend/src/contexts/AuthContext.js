@@ -2,6 +2,11 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { cleanupAuthState } from '../utils/authUtils';
 
+// Configure axios base URL (don't include /api since it's already in the routes)
+axios.defaults.baseURL = process.env.REACT_APP_API_URL ? 
+  process.env.REACT_APP_API_URL.replace('/api', '') : 
+  'http://localhost:5000';
+
 const AuthContext = createContext();
 
 export const useAuth = () => {
