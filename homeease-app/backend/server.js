@@ -83,7 +83,10 @@ const allowedOrigins = [
 ].filter(Boolean);
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: [
+    'http://localhost:3000', // for local development
+    'https://home-ease-imts-git-main-patevanshs-projects.vercel.app' // your deployed frontend
+  ],
   credentials: true
 }));
 
